@@ -216,7 +216,7 @@ Now we can easily make graphs and word clouds.
 
 ```{r}
 pan_words %>%
-  top_n(200) %>%                     # selecting to show only top 15 words
+  top_n(25) %>%                     # selecting to show only top 15 words
   mutate(words = reorder(stemmed_token,n)) %>%  # this will ensure that the highest frequency words appear to the left
   ggplot(aes(words, n)) +
     geom_col() +
@@ -228,12 +228,12 @@ pan_words %>%
   with(wordcloud(stemmed_token, n, max.words = 50))
 ```
 
-The `wordcloud2`` will make a little prettier, more advanced wordcloud. It wants a dataframe with one column called word and one called freq so we do this and then pass the dataframe to the function.
-
 ```{r}
-data <- pan_words %>%
+data1 <- pan_words %>%
   rename(word = stemmed_token) %>%
   rename(freq = n) %>%
-  top_n(200)
-wordcloud2(data, size = 2)
+  top_n(180)
+
+wordcloud2(data1, size = 1)
 ```
+
