@@ -1,0 +1,46 @@
+---
+  title: "Computational Text Analysis for Digital Humanities"
+  subtitle: "Workshop for the Digital Humanities Lab, NTNU"
+  author: Gregory Ferguson-Cradler^[Associate Professor, International Studies with History, Høgskolen i Innlandet.   gregory.fergusoncradler@inn.no]
+  date: "November 9, 2021"
+  output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+  bibliography: dighumpres.bib
+  nocite: '@*'
+---
+  
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy(position = c('top', 'right'))
+```
+
+# Workshop goals
+
+This workshop is designed to introduce participants to what digital and quantitative methods in text analysis can do both theoretically and by looking at recent examples from humanities and interpretive social sciences. The second part of the workshop will provide a very brief introduction to R and text analysis packages in R.
+
+This is a much abbreviated version of a two-day workshop for historians held at NTNU in August 2021. For a much longer and more detailed tutorial in R, see https://gfe061.github.io/ntnutext/index.html.
+
+# Practicalities
+
+This workshop is a very brief overview of computational text methods for the humanities and an even briefer introduction to implementing these methods in R. 
+
+Having your own computer is not necessary for the workshop. If you would like to follow along as we work through the tutorial, you are welcome to do this. For information on downloading and installing R, I recommend following the directions for steps 1-2 on: https://swirlstats.com/students.html. 
+
+Swirl is also a good tool for learning and getting familiar with R. I recommend the two swirl tutorials: "R Programming" and "Regular Expressions". 
+
+In the brief R tutorial we will be using the following packages: tidyverse, tidytext, tm, SnowballC, wordcloud", wordcloud2 og gutenbergr.
+
+
+The following script will install (if not already installed) and load all packages used in this tutorial.
+
+```{r, eval = FALSE}
+if (!requireNamespace("xfun")) install.packages("xfun")
+xfun::pkg_attach2("tidyverse", "tidytext", "SnowballC", "wordcloud", "wordcloud2", "tm", "gutenbergr")
+```
+
+# References and Sources
+
+The tutorial here is based on chapter 1 of:

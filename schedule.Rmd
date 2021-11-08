@@ -1,0 +1,20 @@
+---
+title: "Computational Text Analysis for Digital Humanities"
+subtitle: "Workshop for the Digital Humanities Lab, NTNU"
+date: "November 9, 2021"
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+---
+
+<h2>Schedule</h2>
+<br>
+
+9:00 – 10:30        Quantitative text analysis methods: overview and examples [[PDF](Presentations/Methods.pdf)]
+
+10:30 – 10:45       Break 
+
+10:45 – 12:00       Introduction to R for text analysis 

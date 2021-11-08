@@ -1,0 +1,12 @@
+---
+title: "Overview of methods in digital text analysis"
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+#bibliography: textanalysis.bib
+---
+
+See presentation PDF [here](Presentations/Methods.pdf).

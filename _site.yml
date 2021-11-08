@@ -1,0 +1,26 @@
+name: "Computational Text Analysis for Digital Humanities"
+navbar:
+  title: "Computational Text Analysis for Digital Humanities"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Schedule"
+      href: schedule.html
+    - text: "Overview of methods"
+      href: session1.html
+    - text: "Introduction to R for text analysis"
+      href: session2.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+    include:
+      after_body: footer.html
+    css: styles.css
+output_dir: docs
+
+# To render:
+# setwd("P:/Work/Stellen/Innlandet/2021/NTNU - Dig Humanities Lab workshop/Materials")
+# rmarkdown::render_site()
+
+# Made with Markdown site generator -- SEE: https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html
