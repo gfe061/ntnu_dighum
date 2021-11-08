@@ -24,3 +24,12 @@ output_dir: docs
 # rmarkdown::render_site()
 
 # Made with Markdown site generator -- SEE: https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html
+
+# GIT -- DO:
+# echo "# ntnu_dighum" >> README.md
+# git init
+# git add README.md
+# git commit -m "first commit"
+# git branch -M main
+# git remote add origin https://github.com/gfe061/ntnu_dighum.git
+# git push -u origin main
