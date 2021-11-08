@@ -586,70 +586,71 @@ nrk_stemmed %&gt;%
   top_n(100)</code></pre>
 <pre><code>## Selecting by freq</code></pre>
 <pre class="r"><code>wordcloud2(data, size = 2)</code></pre>
-<div id="htmlwidget-9b2a146f4e6413b3acc5" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9b2a146f4e6413b3acc5">{"x":{"word":["prosent","aksj","regjering","verdi","øke","formuesskatt","nest","år","2021","35","45","avgift","betyr","co2","driftsmidl","endring","faktisk","foreslår","formuesrabatt","kron","kutt","nærmer","sett","skattemess","solberg","øker","0,85","0,95","1,5","1,65","12","25","28","3,66","41","bensin","bety","betydning","budsjett","bunnfradrag","dag","dobbelt","drivstoffpris","ekstr","ektep","fall","finansminist","formu","forslag","forvent","fram","fritidsbo","får","gi","gjør","grep","hatt","kl","klim","legg","likningsverdi","lit","milliard","million","mindr","netto","per","prisstigning","rund","samtid","sat","slagsvold","sp","statsbudsjett","statskass","stor","totalt","tre","trygv","uker","utgå","utov","vedum","økes","øre"],"freq":[8,6,6,4,4,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":45,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+<div id="htmlwidget-af6215f554670b88bca5" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-af6215f554670b88bca5">{"x":{"word":["prosent","aksj","regjering","verdi","øke","formuesskatt","nest","år","2021","35","45","avgift","betyr","co2","driftsmidl","endring","faktisk","foreslår","formuesrabatt","kron","kutt","nærmer","sett","skattemess","solberg","øker","0,85","0,95","1,5","1,65","12","25","28","3,66","41","bensin","bety","betydning","budsjett","bunnfradrag","dag","dobbelt","drivstoffpris","ekstr","ektep","fall","finansminist","formu","forslag","forvent","fram","fritidsbo","får","gi","gjør","grep","hatt","kl","klim","legg","likningsverdi","lit","milliard","million","mindr","netto","per","prisstigning","rund","samtid","sat","slagsvold","sp","statsbudsjett","statskass","stor","totalt","tre","trygv","uker","utgå","utov","vedum","økes","øre"],"freq":[8,6,6,4,4,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":45,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
 </div>
 <div id="larger-corpora" class="section level1" number="4">
 <h1 number="4"><span class="header-section-number">4</span> Larger corpora</h1>
-<p>We now have basic tools that we can apply to larger corpora. The details of reading in texts and corpora would take much longer than the time we have today but R has a number of packages that allow us to access texts that have already been digitized and cleaned. One example is the <code>gutenbergr</code> which allows you to access texts in the Project Gutenberg library (<a href="https://www.gutenberg.org/" class="uri">https://www.gutenberg.org/</a>). If you go to the site and search books, you’ll see that everyone has an ID number that we can then use to get the texts in R. We’ll use the English translation of Pan, by Knut Hamsun, as our example. We’ll do the same as above, with the slight difference of language for stemming and stopwording.</p>
+<p>We now have basic tools that we can apply to larger corpora. The details of reading in texts and corpora would take much longer than the time we have today but R has a number of packages that allow us to access texts that have already been digitized and cleaned. One example is the <code>gutenbergr</code> which allows you to access texts in the Project Gutenberg library (<a href="https://www.gutenberg.org/" class="uri">https://www.gutenberg.org/</a>). If you go to the site and search books, you’ll see that everyone has an ID number that we can then use to get the texts in R. In honor of his 200 birthday, we’ll use the English translation of Dostoevsky’s Crime and Punishment as our example. We’ll do the same as above, with the slight difference of language for stemming and stopwording.</p>
 <pre class="r"><code>library(gutenbergr)
-pan &lt;- gutenberg_download(7214, strip = TRUE)
-pan</code></pre>
-<pre><code>## # A tibble: 5,254 x 2
-##    gutenberg_id text                                                           
-##           &lt;int&gt; &lt;chr&gt;                                                          
-##  1         7214 &quot;PAN&quot;                                                          
-##  2         7214 &quot;&quot;                                                             
-##  3         7214 &quot;By Knut Hamsun&quot;                                               
-##  4         7214 &quot;&quot;                                                             
-##  5         7214 &quot;Translated from the Norwegian of Knut Hamsun By W. W. Worster&quot;
-##  6         7214 &quot;&quot;                                                             
-##  7         7214 &quot;With an Introduction by Edwin Bjoerkman&quot;                      
-##  8         7214 &quot;&quot;                                                             
-##  9         7214 &quot;New York&quot;                                                     
-## 10         7214 &quot;&quot;                                                             
-## # ... with 5,244 more rows</code></pre>
-<p>This is the whole novel together with a number of headers, translator’s introduction, and so on. We can view the whole thing in R in a separate window with <code>View(pan)</code>. When we do this we see that the novel itself begins on line 242 so we’ll cut it down to this and then look at word frequencies.</p>
-<pre class="r"><code>pan %&gt;%
+cp &lt;- gutenberg_download(2554, strip = TRUE)
+cp</code></pre>
+<pre><code>## # A tibble: 22,061 x 2
+##    gutenberg_id text                             
+##           &lt;int&gt; &lt;chr&gt;                            
+##  1         2554 &quot;CRIME AND PUNISHMENT&quot;           
+##  2         2554 &quot;&quot;                               
+##  3         2554 &quot;By Fyodor Dostoevsky&quot;           
+##  4         2554 &quot;&quot;                               
+##  5         2554 &quot;&quot;                               
+##  6         2554 &quot;&quot;                               
+##  7         2554 &quot;Translated By Constance Garnett&quot;
+##  8         2554 &quot;&quot;                               
+##  9         2554 &quot;&quot;                               
+## 10         2554 &quot;&quot;                               
+## # ... with 22,051 more rows</code></pre>
+<p>This is the whole novel together with a number of headers, translator’s introduction, and so on. We can view the whole thing in R in a separate window with <code>View(pan)</code>. When we do this we see that the novel itself begins on line 109 so we’ll cut it down to this and then look at word frequencies.</p>
+<pre class="r"><code>cp &lt;- cp[109:dim(cp)[1], ] # subsets the dataframe from line 109 and up, gets rid of 108 and lower.
+cp %&gt;%
   unnest_tokens(token, text) %&gt;%
   count(token, sort = TRUE)</code></pre>
-<pre><code>## # A tibble: 4,158 x 2
+<pre><code>## # A tibble: 9,695 x 2
 ##    token     n
 ##    &lt;chr&gt; &lt;int&gt;
-##  1 the    1965
-##  2 i      1927
-##  3 and    1662
-##  4 to     1009
-##  5 a       983
-##  6 of      797
-##  7 was     689
-##  8 it      683
-##  9 in      639
-## 10 you     625
-## # ... with 4,148 more rows</code></pre>
+##  1 the    7779
+##  2 and    6935
+##  3 to     5384
+##  4 he     4773
+##  5 a      4580
+##  6 i      3958
+##  7 you    3830
+##  8 of     3773
+##  9 in     3171
+## 10 it     2991
+## # ... with 9,685 more rows</code></pre>
 <p>We’ll definitely want to remove stopwords. We’ll use the stop_words dataframe of English stopwords in `tidytext<code>, thought we could also do this from the</code>tm<code>package in the same way as above (ie.</code>tibble(token = stopwords(“en”))``). We’ll stem at the same time.</p>
-<pre class="r"><code>pan_words &lt;- pan %&gt;%
+<pre class="r"><code>cp_words &lt;- cp %&gt;%
   unnest_tokens(token, text) %&gt;%
   anti_join(stop_words, by = c(&quot;token&quot; = &quot;word&quot;)) %&gt;%
   mutate(stemmed_token = wordStem(token, &quot;en&quot;)) %&gt;%
   count(stemmed_token, sort = TRUE)
-pan_words</code></pre>
-<pre><code>## # A tibble: 2,680 x 2
+cp_words</code></pre>
+<pre><code>## # A tibble: 5,956 x 2
 ##    stemmed_token     n
 ##    &lt;chr&gt;         &lt;int&gt;
-##  1 day             153
-##  2 edwarda         140
-##  3 time            140
-##  4 answer          107
-##  5 look             93
-##  6 eye              91
-##  7 hand             86
-##  8 glahn            85
-##  9 hut              84
-## 10 night            81
-## # ... with 2,670 more rows</code></pre>
+##  1 raskolnikov     725
+##  2 don’t           464
+##  3 it’             451
+##  4 time            449
+##  5 sonia           370
+##  6 day             359
+##  7 that’           354
+##  8 sudden          346
+##  9 hand            327
+## 10 razumihin       325
+## # ... with 5,946 more rows</code></pre>
 <p>Now we can easily make graphs and word clouds.</p>
-<pre class="r"><code>pan_words %&gt;%
+<pre class="r"><code>cp_words %&gt;%
   top_n(25) %&gt;%                     # selecting to show only top 15 words
   mutate(words = reorder(stemmed_token,n)) %&gt;%  # this will ensure that the highest frequency words appear to the left
   ggplot(aes(words, n)) +
@@ -657,17 +658,17 @@ pan_words</code></pre>
     coord_flip()</code></pre>
 <pre><code>## Selecting by n</code></pre>
 <p><img src="session2_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-<pre class="r"><code>pan_words %&gt;%
-  with(wordcloud(stemmed_token, n, max.words = 50))</code></pre>
-<p><img src="session2_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
-<pre class="r"><code>data1 &lt;- pan_words %&gt;%
+<pre class="r"><code>data1 &lt;- cp_words %&gt;%
   rename(word = stemmed_token) %&gt;%
   rename(freq = n) %&gt;%
   top_n(180)</code></pre>
 <pre><code>## Selecting by freq</code></pre>
 <pre class="r"><code>wordcloud2(data1, size = 1)</code></pre>
-<div id="htmlwidget-51a4280876788ca5b830" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-51a4280876788ca5b830">{"x":{"word":["day","edwarda","time","answer","look","eye","hand","glahn","hut","night","doctor","eva","wood","talk","mack","aesop","walk","pass","stood","herr","love","home","call","even","shot","sit","heard","head","round","hear","sea","sat","stand","hour","laugh","wait","gun","boat","feel","heart","lay","life","smile","girl","met","think","stop","sudden","arm","bird","door","window","close","ladi","step","happen","hill","rememb","shoot","cri","fire","leav","lie","moment","move","speak","word","sun","god","strang","white","joy","baron","hamsun","maggi","morn","road","care","cold","left","live","told","tree","understand","watch","danc","glass","listen","voic","fish","ground","heaven","hous","set","happi","mind","mine","air","notic","peopl","rain","sound","stay","woman","wrong","child","come","friend","grass","light","meet","soul","wind","earth","feather","half","minut","morrow","neck","shoe","spoke","dead","drink","foot","kiss","parti","quay","quick","quiet","red","stone","summer","wet","dog","found","hope","lieuten","o'clock","reach","sake","silent","sleep","stare","start","stick","surpris","till","whisper","book","dress","father","hair","hold","offer","row","run","short","trembl","water","bit","breath","chang","chew","dark","dri","flower","forest","front","glanc","green","human","hurri","iselin","load","rock","rose","shoulder","sky","touch","week"],"freq":[153,140,140,107,93,91,86,85,84,81,78,72,69,65,63,61,61,60,60,57,57,55,54,54,54,54,53,52,48,47,47,46,46,45,45,42,41,39,39,38,38,37,37,36,36,36,35,35,34,34,34,34,33,33,33,32,32,32,32,31,31,31,31,31,31,31,31,30,29,29,29,28,26,26,26,26,26,25,25,25,25,25,25,25,25,24,24,24,24,23,23,23,23,23,22,22,22,21,21,21,21,21,21,21,21,20,20,20,20,20,20,20,20,19,19,19,19,19,19,19,19,18,18,18,18,18,18,18,18,18,18,18,18,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,16,16,16,16,16,16,16,16,16,16,16,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":1.17647058823529,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+<div id="htmlwidget-a9fc39d0e4d26aa2975d" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a9fc39d0e4d26aa2975d">{"x":{"word":["raskolnikov","don’t","it’","time","sonia","day","that’","sudden","hand","razumihin","cri","dounia","look","petrovitch","ivanovna","eye","door","word","katerina","moment","head","mother","talk","svidrigaïlov","understand","porfiri","speak","i’v","woman","answer","stood","feel","pyotr","minut","money","peopl","rememb","walk","question","i’ll","heard","mind","strang","laugh","heart","live","notic","smile","hous","left","simpli","idea","life","sit","listen","pass","stand","yesterday","roubl","sort","told","won’t","can’t","ill","tabl","shout","sister","wait","pulcheria","rodya","street","alexandrovna","round","avdotya","matter","lie","murder","brother","love","romanovna","children","step","god","home","posit","sat","girl","luzhin","busi","happen","read","fanci","half","night","hear","rodion","run","ah","care","leav","voic","didn’t","window","begin","afraid","hour","ad","drink","friend","zossimov","dress","person","romanovitch","hurri","ran","evid","nastasya","set","zametov","flat","come","stop","think","light","there’","lodg","observ","polic","brought","dear","found","honour","marfa","offic","stair","surpris","call","sofa","corner","drunk","letter","move","sofya","what’","lay","note","you’v","kill","mutter","complet","crowd","nonsens","petrovna","till","ago","lebeziatnikov","pale","pocket","address","close","straight","fellow","frighten","mean","ten","father","irrit","ladi","amalia","bring","clerk","repeat","whisper","continu","die","ha","suffer","watch","dare","expect","explain","express","natur","reason","respect","rush"],"freq":[725,464,451,449,370,359,354,346,327,325,303,302,293,272,269,262,239,224,216,208,205,200,199,197,195,193,182,178,178,176,175,173,173,170,166,165,164,162,161,159,158,155,150,149,148,146,143,140,137,137,137,135,135,135,134,133,130,130,129,129,129,128,127,127,127,125,125,125,124,124,119,118,117,115,115,114,113,110,110,109,108,107,106,106,106,106,103,103,102,102,101,100,100,100,99,97,97,96,96,96,95,94,92,91,90,89,87,87,87,87,86,86,86,85,85,84,84,84,84,83,81,81,81,80,80,79,79,79,78,78,78,78,78,78,78,78,77,77,76,76,76,76,76,76,75,75,75,74,74,73,73,73,73,73,72,72,72,72,71,71,71,70,70,70,70,69,69,69,68,68,68,68,68,67,67,67,67,67,66,66,66,66,66,66,66,66],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":0.248275862068966,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+<pre class="r"><code>cp_words %&gt;%
+  with(wordcloud(stemmed_token, n, max.words = 50))</code></pre>
+<p><img src="session2_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
 
 <br><br><p>2021. <a href="mailto: gregory.fergusoncradler@inn.no">gregory.fergusoncradler@inn.no</a></p>

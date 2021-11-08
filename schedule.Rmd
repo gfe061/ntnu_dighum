@@ -17,4 +17,8 @@ output:
 
 10:30 – 10:45       Break 
 
-10:45 – 12:00       Introduction to R for text analysis 
+10:45 – 11:50       Introduction to R for text analysis 
+
+11:50 - 12:00       Conclusion
+
+

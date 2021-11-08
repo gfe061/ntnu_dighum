@@ -185,18 +185,19 @@ wordcloud2(data, size = 2)
 
 # Larger corpora
 
-We now have basic tools that we can apply to larger corpora. The details of reading in texts and corpora would take much longer than the time we have today but R has a number of packages that allow us to access texts that have already been digitized and cleaned. One example is the ``gutenbergr`` which allows you to access texts in the Project Gutenberg library (https://www.gutenberg.org/). If you go to the site and search books, you'll see that everyone has an ID number that we can then use to get the texts in R. We'll use the English translation of Pan, by Knut Hamsun, as our example. We'll do the same as above, with the slight difference of language for stemming and stopwording.
+We now have basic tools that we can apply to larger corpora. The details of reading in texts and corpora would take much longer than the time we have today but R has a number of packages that allow us to access texts that have already been digitized and cleaned. One example is the ``gutenbergr`` which allows you to access texts in the Project Gutenberg library (https://www.gutenberg.org/). If you go to the site and search books, you'll see that everyone has an ID number that we can then use to get the texts in R. In honor of his 200 birthday, we'll use the English translation of Dostoevsky's Crime and Punishment as our example. We'll do the same as above, with the slight difference of language for stemming and stopwording.
 
 ```{r}
 library(gutenbergr)
-pan <- gutenberg_download(7214, strip = TRUE)
-pan
+cp <- gutenberg_download(2554, strip = TRUE)
+cp
 ```
 
-This is the whole novel together with a number of headers, translator's introduction, and so on. We can view the whole thing in R in a separate window with ``View(pan)``. When we do this we see that the novel itself begins on line 242 so we'll cut it down to this and then look at word frequencies.
+This is the whole novel together with a number of headers, translator's introduction, and so on. We can view the whole thing in R in a separate window with ``View(pan)``. When we do this we see that the novel itself begins on line 109 so we'll cut it down to this and then look at word frequencies.
 
 ```{r}
-pan %>%
+cp <- cp[109:dim(cp)[1], ] # subsets the dataframe from line 109 and up, gets rid of 108 and lower.
+cp %>%
   unnest_tokens(token, text) %>%
   count(token, sort = TRUE)
 ```
@@ -204,18 +205,18 @@ pan %>%
 We'll definitely want to remove stopwords. We'll use the stop_words dataframe of English stopwords in `tidytext``, thought we could also do this from the ``tm`` package in the same way as above (ie. ``tibble(token = stopwords("en"))``). We'll stem at the same time.
 
 ```{r}
-pan_words <- pan %>%
+cp_words <- cp %>%
   unnest_tokens(token, text) %>%
   anti_join(stop_words, by = c("token" = "word")) %>%
   mutate(stemmed_token = wordStem(token, "en")) %>%
   count(stemmed_token, sort = TRUE)
-pan_words
+cp_words
 ```
 
 Now we can easily make graphs and word clouds.
 
 ```{r}
-pan_words %>%
+cp_words %>%
   top_n(25) %>%                     # selecting to show only top 15 words
   mutate(words = reorder(stemmed_token,n)) %>%  # this will ensure that the highest frequency words appear to the left
   ggplot(aes(words, n)) +
@@ -224,16 +225,18 @@ pan_words %>%
 ```
 
 ```{r}
-pan_words %>%
-  with(wordcloud(stemmed_token, n, max.words = 50))
-```
-
-```{r}
-data1 <- pan_words %>%
+data1 <- cp_words %>%
   rename(word = stemmed_token) %>%
   rename(freq = n) %>%
   top_n(180)
 
 wordcloud2(data1, size = 1)
 ```
+
+```{r}
+cp_words %>%
+  with(wordcloud(stemmed_token, n, max.words = 50))
+```
+
+
 

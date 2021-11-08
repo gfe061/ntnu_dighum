@@ -25,7 +25,7 @@ output_dir: docs
 
 # Made with Markdown site generator -- SEE: https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html
 
-# GIT -- DO:
+# GIT -- DO FIRST TIME:
 # echo "# ntnu_dighum" >> README.md
 # git init
 # git add README.md
@@ -33,3 +33,6 @@ output_dir: docs
 # git branch -M main
 # git remote add origin https://github.com/gfe061/ntnu_dighum.git
 # git push -u origin main
+
+# THEREAFTER:
+# git add *, git commit -m "xxx", git push -u origin main
